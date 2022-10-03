@@ -1,6 +1,6 @@
 # Ilmomasiina
 
-Ilmomasiina is the event registration system originally created by Athene, forked by Tietokilta and currently under
+Ilmomasiina is the event registration system originally created by Athene, forked by Tietokilta, (forked by Teknologföreningen :D) and currently under
 heavy development for our new site. Once finished, it will be available for all organizations to use, along with
 migration tools from the Athene-made version.
 
