@@ -1,4 +1,5 @@
 import moment, { Moment } from 'moment-timezone';
+import i18n from '../locales/i18n';
 
 export enum SignupState {
   disabled = 'disabled',
@@ -56,8 +57,8 @@ export function signupStateText(state: SignupStateInfo): SignupStateText {
       };
     case SignupState.open:
       return {
-        shortLabel: `Auki ${moment(state.closes).format(timeFormat)} asti.`,
-        fullLabel: `Ilmoittautuminen auki ${moment(state.closes).format(timeFormat)} asti.`,
+        shortLabel: i18n.t('openUntil', { time: moment(state.closes).format(timeFormat), }),
+        fullLabel: i18n.t('regOpenUntil', { time: moment(state.closes).format(timeFormat), }),
         class: 'ilmo--signup-opened',
       };
     case SignupState.closed:

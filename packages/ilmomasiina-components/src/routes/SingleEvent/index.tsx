@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Col, Row, Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { linkComponent, useParams } from '../../config/router';
 import { usePaths } from '../../contexts/paths';
@@ -18,6 +19,7 @@ const SingleEventView = () => {
   } = useSingleEventContext();
   const Link = linkComponent();
   const paths = usePaths();
+  const { t } = useTranslation();
 
   if (error) {
     return (
@@ -42,7 +44,9 @@ const SingleEventView = () => {
   return (
     <>
       <Link to={paths.eventsList} style={{ margin: 0 }}>
-        &#8592; Takaisin
+        &#8592;
+        {' '}
+        {t('back')}
       </Link>
       <Row>
         <Col sm={12} md={8}>
@@ -57,10 +61,7 @@ const SingleEventView = () => {
         <>
           <h2>Ilmoittautuneet</h2>
           {signupsByQuota!.map((quota) => (
-            <SignupList
-              key={quota.id}
-              quota={quota}
-            />
+            <SignupList key={quota.id} quota={quota} />
           ))}
         </>
       )}

@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import { Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 import type { QuotaID } from '@tietokilta/ilmomasiina-models';
@@ -20,7 +21,10 @@ type SignupButtonProps = {
 };
 
 const SignupButton = ({
-  isOpen, isClosed, seconds, total,
+  isOpen,
+  isClosed,
+  seconds,
+  total,
 }: SignupButtonProps) => {
   const navigate = useNavigate();
   const paths = usePaths();
@@ -28,6 +32,7 @@ const SignupButton = ({
   const eventState = signupState(registrationStartDate, registrationEndDate);
   const [submitting, setSubmitting] = useState(false);
   const isOnly = quotas.length === 1;
+  const { t } = useTranslation();
 
   const onClick = useCallback(async (quotaId: QuotaID) => {
     if (!isOpen) return;
@@ -41,7 +46,7 @@ const SignupButton = ({
     } catch (e) {
       setSubmitting(false);
       toast.update(progressToast, {
-        render: 'Ilmoittautuminen epäonnistui.',
+        render: t('registerFailed'),
         type: toast.TYPE.ERROR,
         autoClose: 5000,
         closeButton: true,
@@ -53,13 +58,11 @@ const SignupButton = ({
 
   return (
     <div className="ilmo--side-widget">
-      <h3>Ilmoittautuminen</h3>
+      <h3>{t('registration')}</h3>
       <p>
         {signupStateText(eventState).shortLabel}
         {total < COUNTDOWN_DURATION && !isOpen && !isClosed && (
-          <span style={{ color: 'green' }}>
-            {` (${seconds}  s)`}
-          </span>
+          <span style={{ color: 'green' }}>{` (${seconds}  s)`}</span>
         )}
       </p>
       {quotas.map((quota) => (
@@ -71,7 +74,7 @@ const SignupButton = ({
           className="ilmo--signup-button"
           onClick={() => onClick(quota.id)}
         >
-          {isOnly ? 'Ilmoittaudu nyt' : `Ilmoittaudu: ${quota.title}`}
+          {isOnly ? t('registerNow') : `${t('register')}: ${quota.title}`}
         </Button>
       ))}
     </div>

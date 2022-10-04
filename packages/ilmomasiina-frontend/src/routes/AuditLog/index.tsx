@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,11 @@ import './AuditLog.scss';
 
 const AuditLog = () => {
   const dispatch = useTypedDispatch();
-  const { auditLog, auditLogLoadError } = useTypedSelector((state) => state.auditLog, shallowEqual);
+  const { auditLog, auditLogLoadError } = useTypedSelector(
+    (state) => state.auditLog,
+    shallowEqual,
+  );
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getAuditLogs({
@@ -30,15 +35,13 @@ const AuditLog = () => {
 
   return (
     <>
-      <Link to={appPaths.adminEventsList}>&#8592; Takaisin</Link>
+      <Link to={appPaths.adminEventsList}>&#8592; {t('back')}</Link>
       <h1>Toimintoloki</h1>
       <AuditLogPagination />
       <table className="table audit-log--table">
         <thead>
           <tr>
-            <th>
-              Aika
-            </th>
+            <th>Aika</th>
             <th>
               Käyttäjä
               <nav className="audit-log--filter">
@@ -56,7 +59,10 @@ const AuditLog = () => {
               <nav className="audit-log--filter">
                 <AuditLogActionFilter />
                 <AuditLogFilter name="event" placeHolder="Tapahtuma&hellip;" />
-                <AuditLogFilter name="signup" placeHolder="Ilmoittautuminen&hellip;" />
+                <AuditLogFilter
+                  name="signup"
+                  placeHolder="Ilmoittautuminen&hellip;"
+                />
               </nav>
             </th>
           </tr>
@@ -64,9 +70,7 @@ const AuditLog = () => {
         <tbody>
           {auditLogLoadError && (
             <tr>
-              <td colSpan={4}>
-                Lokien lataus epäonnistui
-              </td>
+              <td colSpan={4}>Lokien lataus epäonnistui</td>
             </tr>
           )}
           {!auditLogLoadError && !auditLog && (
@@ -76,12 +80,10 @@ const AuditLog = () => {
               </td>
             </tr>
           )}
-          {auditLog && auditLog.rows.map((item) => (
-            <AuditLogItem
-              key={item.id}
-              item={item}
-            />
-          ))}
+          {auditLog
+            && auditLog.rows.map((item) => (
+              <AuditLogItem key={item.id} item={item} />
+            ))}
         </tbody>
       </table>
     </>

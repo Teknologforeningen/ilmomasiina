@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { useFormikContext } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 import ConfirmButton from '../../../components/ConfirmButton';
@@ -15,6 +16,7 @@ const DeleteSignup = () => {
   const deleteSignup = useDeleteSignup();
   const navigate = useNavigate();
   const paths = usePaths();
+  const { t } = useTranslation();
 
   const { isSubmitting, setSubmitting } = useFormikContext();
 
@@ -46,21 +48,18 @@ const DeleteSignup = () => {
 
   return (
     <div className="ilmo--delete-container">
-      <h2>Poista ilmoittautuminen</h2>
+      <h2>{t('removeReg')}</h2>
       <p>
-        Oletko varma, että haluat poistaa ilmoittautumisesi tapahtumaan
+        {t('removeRegConfirmation')}
         {' '}
-        <strong>
-          {event!.title}
-        </strong>
+        <strong>{event!.title}</strong>
         ?
       </p>
       <p>
-        Jos poistat ilmoittautumisesi, menetät paikkasi jonossa. Jos
-        muutat mielesi, voit aina ilmoittautua tapahtumaan uudelleen
-        myöhemmin, mutta siirryt silloin jonon hännille.
         {' '}
-        <strong>Tätä toimintoa ei voi perua.</strong>
+        {t('removeRegInfo')}
+        {' '}
+        <strong>{t('actionCannotUndone')}</strong>
       </p>
       <ConfirmButton
         type="button"
@@ -68,7 +67,7 @@ const DeleteSignup = () => {
         onClick={doDelete}
         variant="danger"
         confirmDelay={DELETE_CONFIRM_MS}
-        confirmLabel="Paina uudelleen varmistukseksi&hellip;"
+        confirmLabel={t('pressAgain')}
       >
         Poista ilmoittautuminen
       </ConfirmButton>

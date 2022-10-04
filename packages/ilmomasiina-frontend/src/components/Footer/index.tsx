@@ -2,17 +2,20 @@ import React from 'react';
 
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import branding from '../../branding';
 import appPaths from '../../paths';
 
 import './Footer.scss';
 
+const { t } = useTranslation();
+
 const Footer = () => (
   <footer>
     <Container>
       <Link to={appPaths.adminEventsList}>
-        Hallinta
+        {t('admin')}
       </Link>
       {branding.footerGdprText && (
         <a href={branding.footerGdprLink} target="_blank" rel="noreferrer">

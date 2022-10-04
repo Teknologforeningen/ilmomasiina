@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { useParams } from '../../config/router';
 import { EditSignupProps, EditSignupProvider, useEditSignupContext } from '../../modules/editSignup';
@@ -9,6 +10,7 @@ import NarrowContainer from './components/NarrowContainer';
 
 const EditSignupView = () => {
   const { error, pending } = useEditSignupContext();
+  const { t } = useTranslation();
 
   if (error) {
     return (
@@ -16,8 +18,8 @@ const EditSignupView = () => {
         <h1>Hups, jotain meni pieleen</h1>
         <p>
           Ilmoittautumistasi ei löytynyt. Se saattaa olla jo poistettu, tai
-          sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei
-          ole vielä poistunut, yritä kohta uudestaan.
+          sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei ole
+          vielä poistunut, yritä kohta uudestaan.
         </p>
       </NarrowContainer>
     );
