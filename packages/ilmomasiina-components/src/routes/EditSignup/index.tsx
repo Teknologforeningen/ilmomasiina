@@ -1,10 +1,15 @@
 import React from 'react';
 
 import { Button, Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { paths } from '../../config/paths';
 import { linkComponent, useParams } from '../../config/router';
-import { Provider, useEditSignupState, useStateAndDispatch } from '../../modules/editSignup';
+import {
+  Provider,
+  useEditSignupState,
+  useStateAndDispatch,
+} from '../../modules/editSignup';
 import EditForm from './components/EditForm';
 import NarrowContainer from './components/NarrowContainer';
 
@@ -13,6 +18,7 @@ const EditSignupView = () => {
     deleted, error, pending, event,
   }] = useStateAndDispatch();
   const Link = linkComponent();
+  const { t } = useTranslation();
 
   if (error) {
     return (
@@ -20,8 +26,8 @@ const EditSignupView = () => {
         <h1>Hups, jotain meni pieleen</h1>
         <p>
           Ilmoittautumistasi ei löytynyt. Se saattaa olla jo poistettu, tai
-          sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei
-          ole vielä poistunut, yritä kohta uudestaan.
+          sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei ole
+          vielä poistunut, yritä kohta uudestaan.
         </p>
       </NarrowContainer>
     );
@@ -38,15 +44,22 @@ const EditSignupView = () => {
   if (deleted) {
     return (
       <div className="ilmo--status-container">
-        <h1>Ilmoittautumisesi poistettiin onnistuneesti</h1>
-        <Button as={Link} to={paths().eventDetails(event!.slug)} variant="secondary">
-          Takaisin
+        <h1>{t('removalSuccess')}</h1>
+        <Button
+          as={Link}
+          to={paths().eventDetails(event!.slug)}
+          variant="secondary"
+        >
+          {t('back')}
         </Button>
       </div>
     );
   }
 
-  if (event!.registrationEndDate === null || new Date(event!.registrationEndDate) < new Date()) {
+  if (
+    event!.registrationEndDate === null
+    || new Date(event!.registrationEndDate) < new Date()
+  ) {
     return (
       <NarrowContainer className="ilmo--status-container">
         <h1>Hups, jotain meni pieleen</h1>

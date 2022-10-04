@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 import { Quota } from '@tietokilta/ilmomasiina-models/src/services/events';
@@ -22,25 +23,29 @@ type SignupButtonProps = {
 };
 
 const SignupButton = ({
-  isOpen, isClosed, seconds, total,
+  isOpen,
+  isClosed,
+  seconds,
+  total,
 }: SignupButtonProps) => {
   const navigate = useNavigate();
   const { registrationStartDate, registrationEndDate, quotas } = useSingleEventContext().event!;
   const [submitting, setSubmitting] = useState(false);
   const isOnly = quotas.length === 1;
+  const { t } = useTranslation();
 
   async function beginSignup(quotaId: Quota.Id) {
     setSubmitting(true);
     try {
-      const response = await apiFetch('signups', {
+      const response = (await apiFetch('signups', {
         method: 'POST',
         body: { quotaId },
-      }) as Signup.Create.Response;
+      })) as Signup.Create.Response;
       setSubmitting(false);
       navigate(paths().editSignup(response.id, response.editToken));
     } catch (e) {
       setSubmitting(false);
-      toast.error('Ilmoittautuminen epäonnistui.', {
+      toast.error(t('registerFailed'), {
         autoClose: 5000,
       });
     }
@@ -48,13 +53,11 @@ const SignupButton = ({
 
   return (
     <div className="ilmo--side-widget">
-      <h3>Ilmoittautuminen</h3>
+      <h3>{t('registration')}</h3>
       <p>
         {signupState(registrationStartDate, registrationEndDate).shortLabel}
         {total < COUNTDOWN_DURATION && !isOpen && !isClosed && (
-          <span style={{ color: 'green' }}>
-            {` (${seconds}  s)`}
-          </span>
+          <span style={{ color: 'green' }}>{` (${seconds}  s)`}</span>
         )}
       </p>
       {quotas.map((quota) => (
@@ -66,7 +69,7 @@ const SignupButton = ({
           className="ilmo--signup-button"
           onClick={() => isOpen && beginSignup(quota.id)}
         >
-          {isOnly ? 'Ilmoittaudu nyt' : `Ilmoittaudu: ${quota.title}`}
+          {isOnly ? t('registerNow') : `${t('register')}: ${quota.title}`}
         </Button>
       ))}
     </div>

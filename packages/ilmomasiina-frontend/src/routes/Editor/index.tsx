@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import { Formik, FormikHelpers } from 'formik';
 import { Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { shallowEqual } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -9,7 +10,12 @@ import { toast } from 'react-toastify';
 import { fullPaths } from '@tietokilta/ilmomasiina-components/src/config/paths';
 import requireAuth from '../../containers/requireAuth';
 import {
-  getEvent, newEvent, publishEventUpdate, publishNewEvent, resetState, serverEventToEditor,
+  getEvent,
+  newEvent,
+  publishEventUpdate,
+  publishNewEvent,
+  resetState,
+  serverEventToEditor,
 } from '../../modules/editor/actions';
 import { selectFormData as selectInitialFormData } from '../../modules/editor/selectors';
 import { EditorEvent } from '../../modules/editor/types';
@@ -29,11 +35,13 @@ interface MatchParams {
 
 const Editor = () => {
   const dispatch = useTypedDispatch();
-  const {
-    event, isNew, loadError,
-  } = useTypedSelector((state) => state.editor, shallowEqual);
+  const { event, isNew, loadError } = useTypedSelector(
+    (state) => state.editor,
+    shallowEqual,
+  );
   const initialFormData = useTypedSelector(selectInitialFormData);
   const history = useHistory();
+  const { t } = useTranslation();
 
   const urlEventId = useParams<MatchParams>().id;
   const urlIsNew = urlEventId === 'new';
@@ -56,7 +64,10 @@ const Editor = () => {
     allowMoveToQueue: false,
   });
 
-  async function onSubmit(data: EditorEvent, { setSubmitting, setFieldValue }: FormikHelpers<EditorEvent>) {
+  async function onSubmit(
+    data: EditorEvent,
+    { setSubmitting, setFieldValue }: FormikHelpers<EditorEvent>,
+  ) {
     // Consume the "Proceed, move signups to queue" button click, if any.
     const moveToQueue = submitOptions.current.allowMoveToQueue;
     submitOptions.current.allowMoveToQueue = false;
@@ -77,7 +88,9 @@ const Editor = () => {
           autoClose: 2000,
         });
       } else {
-        saved = await dispatch(publishEventUpdate(event!.id, modifiedEvent, moveToQueue));
+        saved = await dispatch(
+          publishEventUpdate(event!.id, modifiedEvent, moveToQueue),
+        );
         if (saved) {
           toast.success('Muutoksesi tallennettiin onnistuneesti!', {
             autoClose: 2000,
@@ -114,7 +127,11 @@ const Editor = () => {
     return (
       <>
         <h1>Muokkaa tapahtumaa</h1>
-        <Link to={fullPaths().adminEventsList}>&#8592; Takaisin</Link>
+        <Link to={fullPaths().adminEventsList}>
+          &#8592;
+          {' '}
+          {t('back')}
+        </Link>
         <div className="ilmo--loading-container">
           <Spinner animation="border" />
         </div>
@@ -123,10 +140,7 @@ const Editor = () => {
   }
 
   return (
-    <Formik
-      initialValues={initialFormData!}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={initialFormData!} onSubmit={onSubmit}>
       {(props) => <EditForm {...props} submitOptions={submitOptions} />}
     </Formik>
   );
