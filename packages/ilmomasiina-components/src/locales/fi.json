@@ -34,7 +34,7 @@
   "send": "Lähetä",
   "update": "Päiviä",
   "completedAction": "{{action}} onnistui",
-  "actionFailed": "{action} ei onnistunut. Tarkista, että kaikki pakolliset kentät on täytetty ja yritä uudestaan.",
+  "actionFailed": "{{action}} ei onnistunut. Tarkista, että kaikki pakolliset kentät on täytetty ja yritä uudestaan.",
   "statusQueue": "Olet jonossa sijalla {{position}}",
   "statusOpenQuota": "Olet avoimessa kiintiössä sijalla {{position}} / {{openQuotaSize}}.",
   "statusQuota": "Olet kiintiössä {{quotaTitle}} sijalla {{position}}{{quotaSize}}.",

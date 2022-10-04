@@ -4,24 +4,24 @@ block mainContent
 	div.content-block
 		p.bodyText #{event.verificationEmail}
 	div.content-block
-		p.bodyText Tapahtuman tiedot:
+		p.bodyText Info om händelsen:
 		ul
 			li
-				strong Tapahtuma: 
+				strong Händelse: 
 				| #{event.title}
 			li
-				strong Sijainti: 
+				strong Plats: 
 				| #{event.location}
 			if date
 				li
-					strong Aika: 
+					strong Tid: 
 					| #{date}
 	div.content-block
-		p.bodyText Ilmoittautumisesi tiedot:
+		p.bodyText Dina registreringsuppgifter:
 		ul
 			each val in answers
 				li
 					strong #{val.label}: 
 					| #{val.answer}
 	div.content-block
-		p.bodyText Mikäli haluat muokata tai perua ilmoittautumisesi, voit tehdä sen painamalla tätä #[a( href=cancelLink ) linkkiä].
+		p.bodyText Om du vill ändra eller avbryta din registrering kan du göra det genom att klicka på #[a( href=cancelLink ) länkken].

@@ -16,7 +16,7 @@ export default async (signup: Signup) => {
 
   // Show name only if filled
   const fullName = `${signup.firstName} ${signup.lastName}`.trim();
-  const nameField = fullName ? [{ label: 'Nimi', answer: fullName }] : [];
+  const nameField = fullName ? [{ label: 'Namn', answer: fullName }] : [];
 
   const questionFields = questions
     .map((question) => <const>[
@@ -31,8 +31,8 @@ export default async (signup: Signup) => {
 
   const fields = [
     ...nameField,
-    { label: 'Sähköposti', answer: String(signup.email) },
-    { label: 'Kiintiö', answer: quota.title },
+    { label: 'Epost', answer: String(signup.email) },
+    { label: 'Kvot', answer: quota.title },
     ...questionFields,
   ];
 
