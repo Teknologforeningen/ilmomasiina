@@ -90,7 +90,7 @@ const EventListView = () => {
 
   return (
     <>
-      <h1><h1>{t('events')}</h1></h1>
+      <h1>{t('events')}</h1>
       <Table className="ilmo--event-list">
         <thead>
           <tr>
