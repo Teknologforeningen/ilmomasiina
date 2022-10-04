@@ -4,6 +4,7 @@ import sum from 'lodash/sum';
 import sumBy from 'lodash/sumBy';
 import moment from 'moment-timezone';
 import { Spinner, Table } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { timezone } from '../../config';
 import { paths } from '../../config/paths';
@@ -17,6 +18,7 @@ import TableRow from './components/TableRow';
 const EventListView = () => {
   const { events, error, pending } = useEventListContext();
   const Link = linkComponent();
+  const { t } = useTranslation();
 
   if (error) {
     return (
@@ -30,7 +32,7 @@ const EventListView = () => {
   if (pending) {
     return (
       <>
-        <h1>Tapahtumat</h1>
+        <h1>{t('events')}</h1>
         <Spinner animation="border" />
       </>
     );
@@ -88,14 +90,14 @@ const EventListView = () => {
 
   return (
     <>
-      <h1>Tapahtumat</h1>
+      <h1>{t('events')}</h1>
       <Table className="ilmo--event-list">
         <thead>
           <tr>
-            <th>Nimi</th>
-            <th>Ajankohta</th>
-            <th>Ilmoittautuminen</th>
-            <th>Ilmoittautuneita</th>
+            <th>{t('name')}</th>
+            <th>{t('timeEvent')}</th>
+            <th>{t('registration')}</th>
+            <th>{t('registered')}</th>
           </tr>
         </thead>
         <tbody>{tableRows}</tbody>

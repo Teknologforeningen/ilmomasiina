@@ -1,11 +1,15 @@
 import React from 'react';
 
 import { Col, Row, Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { paths } from '../../config/paths';
 import { linkComponent, useParams } from '../../config/router';
 import {
-  SingleEventProps, SingleEventProvider, useSingleEventContext, useSingleEventState,
+  SingleEventProps,
+  SingleEventProvider,
+  useSingleEventContext,
+  useSingleEventState,
 } from '../../modules/singleEvent';
 import EventDescription from './components/EventDescription';
 import QuotaStatus from './components/QuotaStatus';
@@ -17,6 +21,7 @@ const SingleEventView = () => {
     event, signupsByQuota, pending, error,
   } = useSingleEventContext();
   const Link = linkComponent();
+  const { t } = useTranslation();
 
   if (error) {
     return (
@@ -41,7 +46,9 @@ const SingleEventView = () => {
   return (
     <>
       <Link to={paths().eventsList} style={{ margin: 0 }}>
-        &#8592; Takaisin
+        &#8592;
+        {' '}
+        {t('back')}
       </Link>
       <Row>
         <Col sm={12} md={8}>
@@ -56,10 +63,7 @@ const SingleEventView = () => {
         <>
           <h2>Ilmoittautuneet</h2>
           {signupsByQuota!.map((quota) => (
-            <SignupList
-              key={quota.id}
-              quota={quota}
-            />
+            <SignupList key={quota.id} quota={quota} />
           ))}
         </>
       )}
