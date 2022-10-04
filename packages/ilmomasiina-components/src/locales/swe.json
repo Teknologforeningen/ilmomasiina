@@ -34,7 +34,7 @@
   "send": "Skicka",
   "update": "Uppdatera",
   "completedAction": "{{action}} lyckades",
-  "actionFailed": "{action} lyckades inte. Kontrollera att alla obligatoriska fält är ifyllda och försök igen.",
+  "actionFailed": "{{action}} lyckades inte. Kontrollera att alla obligatoriska fält är ifyllda och försök igen.",
   "statusQueue": "Du är nummer {{position}} i kön",
   "statusOpenQuota": "Du är nummer {{position}} / {{openQuotaSize}} i den öppna kvoten.",
   "statusQuota": "Du är {{position}}{{quotaSize}} i {{quotaTitle}} kvoten.",
