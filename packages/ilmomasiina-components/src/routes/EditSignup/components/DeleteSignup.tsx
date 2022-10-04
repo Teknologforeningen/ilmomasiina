@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { useFormikContext } from "formik";
-import { Button } from "react-bootstrap";
-import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
+import { useFormikContext } from 'formik';
+import { Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
-import { useStateAndDispatch } from "../../../modules/editSignup";
-import { useDeleteSignup } from "../../../modules/editSignup/actions";
+import { useStateAndDispatch } from '../../../modules/editSignup';
+import { useDeleteSignup } from '../../../modules/editSignup/actions';
 
 const DELETE_CONFIRM_MS = 4000;
 
@@ -33,7 +33,7 @@ const DeleteSignup = () => {
       await deleteSignup();
     } catch (error) {
       setSubmitting(false);
-      toast.error(t("removalFailed"), { autoClose: 5000 });
+      toast.error(t('removalFailed'), { autoClose: 5000 });
     }
   }
 
@@ -48,13 +48,18 @@ const DeleteSignup = () => {
 
   return (
     <div className="ilmo--delete-container">
-      <h2>{t("removeReg")}</h2>
+      <h2>{t('removeReg')}</h2>
       <p>
-        {t("removeRegConfirmation")} <strong>{event!.title}</strong>?
+        {t('removeRegConfirmation')}
+        {' '}
+        <strong>{event!.title}</strong>
+        ?
       </p>
       <p>
-        {" "}
-        {t("removeRegInfo")} <strong>{t("actionCannotUndone")}</strong>
+        {' '}
+        {t('removeRegInfo')}
+        {' '}
+        <strong>{t('actionCannotUndone')}</strong>
       </p>
       <Button
         type="button"
@@ -62,7 +67,7 @@ const DeleteSignup = () => {
         onClick={onDeleteClick}
         variant="danger"
       >
-        {confirming ? t("pressAgain") : t("removeReg")}
+        {confirming ? t('pressAgain') : t('removeReg')}
       </Button>
     </div>
   );
