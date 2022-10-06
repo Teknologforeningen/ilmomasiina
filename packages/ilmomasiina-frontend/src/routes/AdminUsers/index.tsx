@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { Spinner } from "react-bootstrap";
-import { shallowEqual } from "react-redux";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { shallowEqual } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import requireAuth from '../../containers/requireAuth';
 import { getUsers, resetState } from '../../modules/adminUsers/actions';
@@ -19,7 +19,7 @@ const AdminUsersList = () => {
   const dispatch = useTypedDispatch();
   const { users, usersLoadError } = useTypedSelector(
     (state) => state.adminUsers,
-    shallowEqual
+    shallowEqual,
   );
   const { t } = useTranslation();
   useEffect(() => {
@@ -32,7 +32,7 @@ const AdminUsersList = () => {
   if (usersLoadError) {
     return (
       <>
-        <h1>Hups, jotain meni pieleen</h1>
+        <h1>{t('errorTitle')}</h1>
         <p>Käyttäjien lataus epäonnistui</p>
       </>
     );

@@ -4,7 +4,9 @@
   "changeRegistration": "Muokkaa ilmoittautumista",
   "events": "Tapahtumat",
   "name": "Namn",
+  "noRegistrations": "Ei ilmoittautumista.",
   "timeEvent": "Ajankohta",
+  "regTime": "Ilmoittautumisaika",
   "registration": "Ilmoittautuminen",
   "registered": "Ilmoittautuneita",
   "register": "Ilmoittaudu",
@@ -45,5 +47,13 @@
   "pressAgain": "Paina uudelleen varmistukseksi\u2026",
   "removeReg": "Poista ilmoittautuminen",
   "removalSuccess": "Ilmoittautumisesi poistettiin onnistuneesti",
-  "back": "Takaisin"
+  "back": "Takaisin",
+  "quota": "Kiintiö",
+  "openQuota": "Avoin kiintiö",
+  "regClosed": "Ilmoittautuminen on päättynyt.",
+  "cannotReg": "Tapahtumaan ei voi ilmoittautua.",
+  "position": "Sija",
+  "hidden": "Piilotettu",
+  "errorTitle": "Hups, jotain meni pieleen",
+  "noRegFoundMessage": "Ilmoittautumistasi ei löytynyt. Se saattaa olla jo poistettu, tai sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei ole vielä poistunut, yritä kohta uudestaan."
 }

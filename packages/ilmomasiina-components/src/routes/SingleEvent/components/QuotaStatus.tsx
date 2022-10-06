@@ -1,14 +1,18 @@
 import React from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { useSingleEventContext } from '../../../modules/singleEvent';
 import { OPENQUOTA, WAITLIST } from '../../../utils/signupUtils';
 import QuotaProgress from './QuotaProgress';
 
 const QuotaStatus = () => {
   const { event, signupsByQuota } = useSingleEventContext();
+  const { t } = useTranslation();
+
   return (
     <div className="ilmo--side-widget">
-      <h3>Ilmoittautuneet</h3>
+      <h3>{t('registered')}</h3>
       {signupsByQuota!.map((quota) => {
         if (quota.id === OPENQUOTA) {
           return (

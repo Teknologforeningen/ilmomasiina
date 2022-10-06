@@ -116,7 +116,7 @@ const Editor = () => {
   if (loadError) {
     return (
       <div className="ilmo--loading-container">
-        <h1>Hups, jotain meni pieleen</h1>
+        <h1>{t('errorTitle')}</h1>
         <p>{`Tapahtumaa id:llä "${urlEventId}" ei löytynyt`}</p>
         <Link to={appPaths.adminEventsList}>Palaa tapahtumalistaukseen</Link>
       </div>

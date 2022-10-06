@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import moment, { Moment } from 'moment-timezone';
 import i18n from '../locales/i18n';
 
@@ -46,7 +47,7 @@ export function signupStateText(state: SignupStateInfo): SignupStateText {
   switch (state.state) {
     case SignupState.disabled:
       return {
-        shortLabel: 'Tapahtumaan ei voi ilmoittautua.',
+        shortLabel:  i18n.t('cannotReg'),
         class: 'ilmo--signup-disabled',
       };
     case SignupState.not_opened:
@@ -63,7 +64,7 @@ export function signupStateText(state: SignupStateInfo): SignupStateText {
       };
     case SignupState.closed:
       return {
-        shortLabel: 'Ilmoittautuminen on päättynyt.',
+        shortLabel: i18n.t('regClosed'),
         class: 'ilmo--signup-closed',
       };
     default:

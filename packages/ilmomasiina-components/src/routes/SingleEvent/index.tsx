@@ -24,7 +24,7 @@ const SingleEventView = () => {
   if (error) {
     return (
       <div className="ilmo--loading-container">
-        <h1>Hups, jotain meni pieleen</h1>
+        <h1>{t('errorTitle')}</h1>
         <p>
           Tapahtumaa ei löytynyt. Se saattaa olla menneisyydessä tai poistettu.
         </p>
@@ -59,7 +59,7 @@ const SingleEventView = () => {
       </Row>
       {event!.signupsPublic && (
         <>
-          <h2>Ilmoittautuneet</h2>
+          <h2>{t('registered')}</h2>
           {signupsByQuota!.map((quota) => (
             <SignupList key={quota.id} quota={quota} />
           ))}

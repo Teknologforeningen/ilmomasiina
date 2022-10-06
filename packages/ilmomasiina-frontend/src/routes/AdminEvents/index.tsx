@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { Button, Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -12,8 +13,11 @@ import AdminEventListItem from './AdminEventListItem';
 
 const AdminEventsList = () => {
   const dispatch = useTypedDispatch();
-  const { events, eventsLoadError } = useTypedSelector((state) => state.adminEvents, shallowEqual);
-
+  const { events, eventsLoadError } = useTypedSelector(
+    (state) => state.adminEvents,
+    shallowEqual,
+  );
+  const { t } = useTranslation();
   useEffect(() => {
     dispatch(getAdminEvents());
     return () => {
@@ -24,7 +28,7 @@ const AdminEventsList = () => {
   if (eventsLoadError) {
     return (
       <>
-        <h1>Hups, jotain meni pieleen</h1>
+        <h1>{t('errorTitle')}</h1>
         <p>Tapahtumien lataus epäonnistui</p>
       </>
     );
@@ -65,10 +69,7 @@ const AdminEventsList = () => {
         </thead>
         <tbody>
           {events.map((event) => (
-            <AdminEventListItem
-              key={event.id}
-              event={event}
-            />
+            <AdminEventListItem key={event.id} event={event} />
           ))}
         </tbody>
       </table>

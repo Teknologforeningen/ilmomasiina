@@ -9,6 +9,7 @@ import type {
 } from '@tietokilta/ilmomasiina-models';
 import { SignupStatus } from '@tietokilta/ilmomasiina-models';
 import { timezone } from '../config';
+import i18n from '../locales/i18n';
 
 /** Placeholder quota ID for the open quota. */
 export const OPENQUOTA = '\x00open';
@@ -77,7 +78,7 @@ export function getSignupsByQuota(event: AnyEventSchema): QuotaSignups[] {
   // Open quota is shown if the event has one, or if signups have been assigned there nevertheless.
   const openQuota = openSignups.length > 0 || event.openQuotaSize > 0 ? [{
     id: OPENQUOTA as typeof OPENQUOTA,
-    title: 'Avoin kiintiö',
+    title: i18n.t('openQuota'),
     size: event.openQuotaSize,
     signups: openSignups,
     signupCount: Math.max(openQuotaCount, openSignups.length),

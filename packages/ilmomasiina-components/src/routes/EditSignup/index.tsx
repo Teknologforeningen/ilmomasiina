@@ -15,11 +15,9 @@ const EditSignupView = () => {
   if (error) {
     return (
       <NarrowContainer className="ilmo--status-container">
-        <h1>Hups, jotain meni pieleen</h1>
+        <h1>{t('errorTitle')}</h1>
         <p>
-          Ilmoittautumistasi ei löytynyt. Se saattaa olla jo poistettu, tai
-          sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei ole
-          vielä poistunut, yritä kohta uudestaan.
+          {t('noRegFoundMessage')}
         </p>
       </NarrowContainer>
     );

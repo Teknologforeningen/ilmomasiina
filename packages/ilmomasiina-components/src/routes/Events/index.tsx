@@ -20,7 +20,7 @@ const EventListView = () => {
   if (error) {
     return (
       <>
-        <h1>Hups, jotain meni pieleen</h1>
+        <h1>{t('errorTitle')}</h1>
         <p>Tapahtumien lataus epäonnistui</p>
       </>
     );
