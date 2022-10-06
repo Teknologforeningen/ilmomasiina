@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import moment from 'moment';
 
 import i18n from '../locales/i18n';
@@ -11,7 +12,7 @@ export interface SignupState {
 const signupState = (starts: string | null, closes: string | null) => {
   if (starts === null || closes === null) {
     return {
-      shortLabel: 'Tapahtumaan ei voi ilmoittautua.',
+      shortLabel: i18n.t('cannotReg'),
       class: 'ilmo--signup-disabled',
     };
   }
@@ -47,7 +48,7 @@ const signupState = (starts: string | null, closes: string | null) => {
   }
 
   return {
-    shortLabel: 'Ilmoittautuminen on päättynyt.',
+    shortLabel: i18n.t('regClosed'),
     class: 'ilmo--signup-closed',
   };
 };

@@ -42,7 +42,7 @@ export const defaultEvent = (): EditorEvent => ({
   quotas: [
     {
       key: 'new',
-      title: 'Kiintiö',
+      title: 'Kvot',
       size: 20,
     },
   ],

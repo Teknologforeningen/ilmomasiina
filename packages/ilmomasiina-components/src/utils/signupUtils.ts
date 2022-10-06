@@ -6,6 +6,7 @@ import { AdminEvent } from '@tietokilta/ilmomasiina-models/src/services/admin/ev
 import { Event, Quota } from '@tietokilta/ilmomasiina-models/src/services/events';
 import { Signup } from '@tietokilta/ilmomasiina-models/src/services/signups';
 import { timezone } from '../config';
+import i18n from '../locales/i18n';
 
 export const WAITLIST = '\x00waitlist';
 export const OPENQUOTA = '\x00open';
@@ -56,7 +57,7 @@ export function getSignupsByQuota(event: AnyEventDetails): QuotaSignups[] {
   // Open quota is shown if the event has one, or if signups have been assigned there nevertheless.
   const openQuota = openSignups.length > 0 || event.openQuotaSize > 0 ? [{
     id: OPENQUOTA as typeof OPENQUOTA,
-    title: 'Avoin kiintiö',
+    title: i18n.t('openQuota'),
     size: event.openQuotaSize,
     signups: openSignups,
   }] : [];
