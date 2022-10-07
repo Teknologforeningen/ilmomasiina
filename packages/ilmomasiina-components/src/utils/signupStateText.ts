@@ -52,14 +52,14 @@ export function signupStateText(state: SignupStateInfo): SignupStateText {
       };
     case SignupState.not_opened:
       return {
-        shortLabel: `Alkaa ${moment(state.opens).format(timeFormat)}.`,
-        fullLabel: `Ilmoittautuminen alkaa ${moment(state.opens).format(timeFormat)}.`,
+        shortLabel: i18n.t('signupOpensAt', { time: moment(state.opens).format(timeFormat), }),
+        fullLabel: i18n.t('regsignupOpensAt', { time: moment(state.opens).format(timeFormat), }),
         class: 'ilmo--signup-not-opened',
       };
     case SignupState.open:
       return {
-        shortLabel: i18n.t('openUntil', { time: moment(state.closes).format(timeFormat), }),
-        fullLabel: i18n.t('regOpenUntil', { time: moment(state.closes).format(timeFormat), }),
+        shortLabel: i18n.t('signupOpenUntil', { time: moment(state.closes).format(timeFormat), }),
+        fullLabel: i18n.t('regsignupOpenUntil', { time: moment(state.closes).format(timeFormat), }),
         class: 'ilmo--signup-opened',
       };
     case SignupState.closed:
