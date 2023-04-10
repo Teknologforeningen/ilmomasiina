@@ -17,9 +17,9 @@ block mainContent
 					strong Tid: 
 					| #{date}
 	div.content-block
-		p.bodyText Dina registreringsuppgifter:
+		p.bodyText Dina anmälningsuppgifter:
 		ul
 			each val in answers
 				li #[strong #{val.label}:] #{val.answer}
 	div.content-block
-		p.bodyText Om du vill ändra eller avbryta din registrering kan du göra det genom att klicka på #[a( href=cancelLink ) länkken].
+		p.bodyText Om du vill avanmäla dig eller ändra din anmälan kan du göra det genom att klicka på #[a( href=cancelLink ) denna länk].

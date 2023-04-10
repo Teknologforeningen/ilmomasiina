@@ -16,7 +16,7 @@
   "regInfo": "Voit muokata ilmoittautumistasi tai poistaa sen myöhemmin tallentamalla tämän sivun URL-osoitteen.",
   "logout": "Logout",
   "edit": "Muokkaa",
-  "aEdit": "Muokkaus",
+  "editing": "Muokkaus",
   "category": "Kategoria",
   "starts": "Alkaa",
   "ends": "Loppuu",
@@ -26,10 +26,10 @@
   "fbEvent": "Facebook-tapahtuma",
   "inAction": "käynissä",
   "signupOpenUntil": "Auki {{time}} asti.",
-  "regsignupOpenUntil": "Ilmoittautuminen auki {{time}} asti.",
+  "longSignupOpenUntil": "Ilmoittautuminen auki {{time}} asti.",
   "signupOpensAt": "Alkaa {{time}}.",
-  "regsignupOpensAt": "Ilmoittautuminen alkaa {{time}}.",
-  "hr": "klo",
+  "longSignupOpensAt": "Ilmoittautuminen alkaa {{time}}.",
+  "time": "klo",
   "firstName": "Etunimi",
   "lastName": "Sukunimi",
   "namePublic": "Näytä nimi julkisessa osallistujalistassa.",
@@ -57,5 +57,7 @@
   "position": "Sija",
   "hidden": "Piilotettu",
   "errorTitle": "Hups, jotain meni pieleen",
-  "noRegFoundMessage": "Ilmoittautumistasi ei löytynyt. Se saattaa olla jo poistettu, tai sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei ole vielä poistunut, yritä kohta uudestaan."
+  "noRegFoundMessage": "Ilmoittautumistasi ei löytynyt. Se saattaa olla jo poistettu, tai sitten jotain muuta kummallista tapahtui. Jos ilmoittautumisesi ei ole vielä poistunut, yritä kohta uudestaan.",
+  "publicQuestion": "Tämän kentän vastaukset ovat julkisia.",
+  "cannotUpdateReg": "Ilmoittautumistasi ei voi enää muokata tai perua, koska tapahtuman ilmoittautuminen on sulkeutunut."
 }

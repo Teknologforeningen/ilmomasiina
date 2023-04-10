@@ -45,7 +45,7 @@ const Login = () => {
                 as={Form.Control}
                 type="email"
                 required
-                placeholder="admin@athene.fi"
+                placeholder="evenemang@tf.fi"
                 isInvalid={errors.email}
               />
               <Form.Control.Feedback type="invalid">

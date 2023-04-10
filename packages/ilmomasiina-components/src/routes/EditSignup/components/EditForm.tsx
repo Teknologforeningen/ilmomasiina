@@ -28,7 +28,7 @@ const EditForm = () => {
   const [submitError, setSubmitError] = useState(false);
 
   async function onSubmit(answers: SignupUpdateBody, { setSubmitting }: FormikHelpers<SignupUpdateBody>) {
-    const action = isNew ? t('registration') : t('aEdit');
+    const action = isNew ? t('registration') : t('editing');
     const progressToast = toast.loading(`${action} ${t('inAction')}`);
 
     try {
@@ -74,10 +74,7 @@ const EditForm = () => {
             <p className="ilmo--form-error">{t('regProblems')}</p>
           )}
           {registrationClosed && (
-            <p className="ilmo--form-error">
-              Ilmoittautumistasi ei voi enää muokata tai perua, koska tapahtuman
-              ilmoittautuminen on sulkeutunut.
-            </p>
+            <p className="ilmo--form-error">{t('cannotUpdateReg')}</p>
           )}
           <Form onSubmit={handleSubmit} className="ilmo--form">
             {event!.nameQuestion && (

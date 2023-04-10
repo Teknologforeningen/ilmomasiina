@@ -69,7 +69,7 @@ const DeleteSignup = () => {
         confirmDelay={DELETE_CONFIRM_MS}
         confirmLabel={t('pressAgain')}
       >
-        Poista ilmoittautuminen
+        {t('removeReg')}
       </ConfirmButton>
     </div>
   );

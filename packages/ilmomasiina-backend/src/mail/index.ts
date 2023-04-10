@@ -63,7 +63,7 @@ export default class EmailService {
         },
       };
       const html = await email.render(path.join(TEMPLATE_DIR, 'confirmation/html'), brandedParams);
-      const subject = `${params.edited ? 'Muokkaus' : 'Ilmoittautumis'}vahvistus: ${params.event.title}`;
+      const subject = `${params.edited ? 'Ändrings' : 'Anmälnings'}bekräftelse: ${params.event.title}`;
       await EmailService.send(to, subject, html);
     } catch (error) {
       console.error(error);

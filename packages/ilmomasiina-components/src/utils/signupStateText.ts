@@ -1,4 +1,4 @@
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import moment, { Moment } from 'moment-timezone';
 import i18n from '../locales/i18n';
 
@@ -42,7 +42,8 @@ export interface SignupStateText {
 }
 
 export function signupStateText(state: SignupStateInfo): SignupStateText {
-  const timeFormat = 'D.M.Y [klo] HH:mm';
+  const { t } = useTranslation();
+  const timeFormat = `D.M.Y [${t('time')}] HH:mm`;
 
   switch (state.state) {
     case SignupState.disabled:
@@ -53,13 +54,13 @@ export function signupStateText(state: SignupStateInfo): SignupStateText {
     case SignupState.not_opened:
       return {
         shortLabel: i18n.t('signupOpensAt', { time: moment(state.opens).format(timeFormat), }),
-        fullLabel: i18n.t('regsignupOpensAt', { time: moment(state.opens).format(timeFormat), }),
+        fullLabel: i18n.t('longSignupOpensAt', { time: moment(state.opens).format(timeFormat), }),
         class: 'ilmo--signup-not-opened',
       };
     case SignupState.open:
       return {
         shortLabel: i18n.t('signupOpenUntil', { time: moment(state.closes).format(timeFormat), }),
-        fullLabel: i18n.t('regsignupOpenUntil', { time: moment(state.closes).format(timeFormat), }),
+        fullLabel: i18n.t('longSignupOpenUntil', { time: moment(state.closes).format(timeFormat), }),
         class: 'ilmo--signup-opened',
       };
     case SignupState.closed:
