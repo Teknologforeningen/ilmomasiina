@@ -54,7 +54,7 @@ const SignupButton = ({
         isLoading: false,
       });
     }
-  }, [navigate, paths, isOpen]);
+  }, [navigate, paths, isOpen, t]);
 
   return (
     <div className="ilmo--side-widget">

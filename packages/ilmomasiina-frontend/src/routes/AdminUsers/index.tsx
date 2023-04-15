@@ -67,7 +67,10 @@ const AdminUsersList = () => {
 
   return (
     <>
-      <Link to={appPaths.adminEventsList}>&#8592; {t("back")}</Link>
+      <Link to={appPaths.adminEventsList}>
+        &#8592;
+        {t('back')}
+      </Link>
       <h1>Käyttäjien hallinta</h1>
       {content}
     </>

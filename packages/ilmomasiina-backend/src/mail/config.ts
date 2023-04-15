@@ -31,8 +31,8 @@ const mailTransporter: Transporter = (() => {
         pass: config.smtpPassword,
       },
       tls: {
-        ciphers:'SSLv3'
-      }
+        ciphers: 'SSLv3',
+      },
     } as SMTPTransport.Options);
   }
 

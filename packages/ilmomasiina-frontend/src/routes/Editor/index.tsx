@@ -127,7 +127,10 @@ const Editor = () => {
     return (
       <>
         <h1>Muokkaa tapahtumaa</h1>
-        <Link to={appPaths.adminEventsList}>&#8592; {t('back')}</Link>
+        <Link to={appPaths.adminEventsList}>
+          &#8592;
+          {t('back')}
+        </Link>
         <div className="ilmo--loading-container">
           <Spinner animation="border" />
         </div>

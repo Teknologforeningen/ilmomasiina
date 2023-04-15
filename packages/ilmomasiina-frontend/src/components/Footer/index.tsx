@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import branding from '../../branding';
 import appPaths from '../../paths';
 
 import './Footer.scss';
-
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -30,7 +29,7 @@ const Footer = () => {
         )}
       </Container>
     </footer>
-  )
+  );
 };
 
 export default Footer;

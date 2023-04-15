@@ -31,7 +31,10 @@ const EditorToolbar = ({ onSubmitClick }: Props) => {
       <h1>{isNew ? 'Luo uusi tapahtuma' : 'Muokkaa tapahtumaa'}</h1>
       <div className="event-editor--buttons-wrapper">
         <div className="flex-fill">
-          <Link to={appPaths.adminEventsList}>&#8592; {t('back')}</Link>
+          <Link to={appPaths.adminEventsList}>
+            &#8592;
+            {t('back')}
+          </Link>
         </div>
         {isSubmitting && <Spinner animation="border" />}
         <div className="event-editor--public-status">

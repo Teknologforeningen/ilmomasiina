@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useEditSignupContext } from '../../../modules/editSignup';
 import { useTranslation } from 'react-i18next';
+
+import { useEditSignupContext } from '../../../modules/editSignup';
 
 const SignupStatus = () => {
   const { event, signup } = useEditSignupContext();

@@ -28,7 +28,8 @@ const SignupList = ({ quota }: Props) => {
           <Table size="sm">
             <thead className="thead-light">
               <tr>
-                <th key="position">{t('position')}
+                <th key="position">
+                  {t('position')}
                 </th>
                 {nameQuestion && (
                   <th key="attendee" style={{ minWidth: 90 }}>

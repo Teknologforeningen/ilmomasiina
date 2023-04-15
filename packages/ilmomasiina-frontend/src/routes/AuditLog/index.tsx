@@ -35,7 +35,10 @@ const AuditLog = () => {
 
   return (
     <>
-      <Link to={appPaths.adminEventsList}>&#8592; {t('back')}</Link>
+      <Link to={appPaths.adminEventsList}>
+        &#8592;
+        {t('back')}
+      </Link>
       <h1>Toimintoloki</h1>
       <AuditLogPagination />
       <table className="table audit-log--table">
