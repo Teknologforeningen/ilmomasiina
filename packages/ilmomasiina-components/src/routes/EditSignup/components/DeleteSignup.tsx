@@ -26,7 +26,7 @@ const DeleteSignup = () => {
       setSubmitting(true);
       await deleteSignup();
       toast.update(progressToast, {
-        render: 'Ilmoittautumisesi poistettiin onnistuneesti.',
+        render: t('removalSuccess'),
         type: toast.TYPE.SUCCESS,
         closeButton: true,
         closeOnClick: true,
@@ -36,7 +36,7 @@ const DeleteSignup = () => {
     } catch (error) {
       setSubmitting(false);
       toast.update(progressToast, {
-        render: 'Poisto epäonnistui.',
+        render: t('removalFailed'),
         type: toast.TYPE.ERROR,
         autoClose: 5000,
         closeButton: true,
