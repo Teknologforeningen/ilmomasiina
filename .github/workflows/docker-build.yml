@@ -2,16 +2,16 @@ name: Build & deploy
 
 env:
   # Change this to upload the built image to your own organization.
-  docker_tag: "ghcr.io/tietokilta/ilmomasiina"
+  docker_tag: "ghcr.io/teknologforeningen/ilmomasiina"
 
   # Change these to customize your build.
-  branding_header_title_text: "Tietokillan ilmomasiina"
-  branding_header_title_text_short: "Ilmomasiina"
-  branding_footer_gdpr_text: "Tietosuoja"
-  branding_footer_gdpr_link: "https://tietokilta.fi/fi/kilta/ilmorekisteri"
-  branding_footer_home_text: "Tietokilta.fi"
-  branding_footer_home_link: "https://tietokilta.fi"
-  branding_login_placeholder_email: "admin@tietokilta.fi"
+  branding_header_title_text: "TF evenemang"
+  branding_header_title_text_short: "Evenemang"
+  branding_footer_gdpr_text: "Dataskydd"
+  branding_footer_gdpr_link: "https://tf.fi"
+  branding_footer_home_text: "Tf.fi"
+  branding_footer_home_link: "https://tf.fi"
+  branding_login_placeholder_email: "dator@tf.fi"
 
 on:
   push:
@@ -25,36 +25,13 @@ jobs:
     name: Lint & type-check
     uses: ./.github/workflows/lint-test.yml
 
-  packagejson:
-    name: Check package.json versions
-    runs-on: ubuntu-latest
-    if: github.ref_type == 'tag'
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v4
-
-      - name: Check package.json versions against tag
-        run: |
-          errors=0
-          for file in package.json packages/*/package.json
-          do
-            if cat $file | jq '"v" + .version' | grep -Fqvx '"${{ github.ref_name }}"'
-            then
-              echo "::error file=$file::The version here does not match the Git tag you pushed (${{ github.ref_name }}). This would cause no NPM packages to be published."
-              errors=1
-            fi
-          done
-          exit $errors
-
   docker:
     name: Push Docker image to GitHub Packages
-    needs: [lint, packagejson]
+    needs: [lint]
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
-    # Change this to your repo name to build automatically on your fork.
-    if: github.repository == 'Tietokilta/ilmomasiina'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -106,31 +83,3 @@ jobs:
     outputs:
       tag: ${{ steps.meta.outputs.version }}
 
-  # This is disabled on forks, you'll most likely need to modify it anyway for your usage
-  deploy:
-    name: Push update to App Service
-    needs: docker
-    if: github.ref_type == 'tag' && github.repository == 'Tietokilta/ilmomasiina'
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Login via Azure CLI
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - uses: azure/webapps-deploy@v3
-        with:
-          app-name: tik-ilmo-prod-app
-          images: "${{ env.docker_tag }}:${{ needs.docker.outputs.tag }}"
-
-  # This is disabled on forks since you probably don't need to upload your own packages
-  npm:
-    name: Publish JS packages
-    needs: [lint, packagejson]
-    permissions:
-      packages: write
-      contents: read
-    if: github.ref_type == 'tag' && github.repository == 'Tietokilta/ilmomasiina'
-    uses: ./.github/workflows/npm-build.yml
-    secrets: inherit
