@@ -17,8 +17,8 @@ if (!process.env.BASE_URL && process.env.EMAIL_BASE_URL) {
   process.env.BASE_URL = envString("EMAIL_BASE_URL") + envString("PATH_PREFIX", "");
   console.warn(
     "BASE_URL is not set - assuming based on EMAIL_BASE_URL and PATH_PREFIX:\n" +
-      `${process.env.BASE_URL}\n` +
-      "This behavior is DEPRECATED and may be removed in a future Ilmomasiina version.",
+    `${process.env.BASE_URL}\n` +
+    "This behavior is DEPRECATED and may be removed in a future Ilmomasiina version.",
   );
 }
 
@@ -87,7 +87,7 @@ const config = {
    *
    * Also used for URLs in iCalendar.
    */
-  mailDefaultLang: envString("MAIL_DEFAULT_LANG", "fi"),
+  mailDefaultLang: envString("MAIL_DEFAULT_LANG", "sv"),
 
   /** Domain name used for iCalendar UIDs. */
   icalUidDomain: envString("ICAL_UID_DOMAIN", null),
@@ -176,8 +176,8 @@ if (!config.feathersAuthSecret) {
 if (config.oldEditTokenSalt === config.newEditTokenSecret) {
   throw new Error(
     "Don't use the same secret for EDIT_TOKEN_SALT and NEW_EDIT_TOKEN_SECRET.\n" +
-      "If this is a new installation, leave EDIT_TOKEN_SALT empty. If this is an old installation, " +
-      "leave EDIT_TOKEN_SALT as is and generate a new secret for NEW_EDIT_TOKEN_SECRET.",
+    "If this is a new installation, leave EDIT_TOKEN_SALT empty. If this is an old installation, " +
+    "leave EDIT_TOKEN_SALT as is and generate a new secret for NEW_EDIT_TOKEN_SECRET.",
   );
 }
 

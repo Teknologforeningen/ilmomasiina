@@ -60,7 +60,7 @@ export function useMillisecondsDateTimeFormatter() {
 
 /** Returns a formatter for seconds-accurate datetimes like "31.12.2024 23:59:59". */
 export function getCsvDateTimeFormatter() {
-  return new Intl.DateTimeFormat("fi-FI", {
+  return new Intl.DateTimeFormat("sv-FI", {
     day: "numeric",
     month: "numeric",
     year: "numeric",

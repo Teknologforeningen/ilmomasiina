@@ -30,7 +30,7 @@ const GenerateSlug = () => {
       const generatedSlug = title
         .normalize("NFD") // converts e.g. ä to a + umlaut
         .replace(/[^A-Za-z0-9]+/g, "")
-        .toLocaleLowerCase("fi");
+        .toLocaleLowerCase("sv");
       form.change("slug", generatedSlug);
     }
   }, [form, isNew, title, touched]);

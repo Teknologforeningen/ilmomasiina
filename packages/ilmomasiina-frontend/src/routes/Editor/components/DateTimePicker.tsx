@@ -1,14 +1,14 @@
 import React, { ComponentPropsWithoutRef } from "react";
 
 import enUS from "date-fns/locale/en-US";
-import fi from "date-fns/locale/fi";
+import sv from "date-fns/locale/sv";
 import DatePicker, { registerLocale } from "react-datepicker";
 import { useField } from "react-final-form";
 import { useTranslation } from "react-i18next";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-registerLocale("fi", fi);
+registerLocale("sv", sv);
 registerLocale("en", enUS);
 
 type Props = Pick<

@@ -2,12 +2,12 @@ import i18n from "i18next";
 
 import config from "./config";
 import * as en from "./locales/en.json";
-import * as fi from "./locales/fi.json";
+import * as sv from "./locales/sv.json";
 
 export const resources = {
   // this way we generate typescript errors if not exact match
-  en: en as typeof fi,
-  fi: fi as typeof en,
+  en: en as typeof sv,
+  sv: sv as typeof en
 } as const;
 
 i18n.init({
@@ -15,8 +15,8 @@ i18n.init({
   fallbackLng: config.mailDefaultLang,
 
   resources: {
-    fi,
     en,
+    sv,
   },
 });
 

@@ -4,20 +4,20 @@ import { createInstance } from "i18next";
 import { I18nextProvider } from "react-i18next";
 
 import * as en from "./locales/en.json";
-import * as fi from "./locales/fi.json";
+import * as sv from "./locales/sv.json";
 
 export const defaultNS = ["components"] as const;
 export const resources = {
   // this way we generate typescript errors if not exact match
-  fi: fi as typeof en,
-  en: en as typeof fi,
+  en: en as typeof sv,
+  sv: sv as typeof en,
 } as const;
 
 export { resources as i18nResources };
 
 const i18n = createInstance({
   resources,
-  fallbackLng: "fi",
+  fallbackLng: "sv",
   defaultNS,
   interpolation: {
     // for React

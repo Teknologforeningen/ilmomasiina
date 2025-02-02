@@ -29,8 +29,8 @@ const Header = () => {
           <span className="d-none d-sm-inline">{branding.headerTitle}</span>
           <span className="d-sm-none">{branding.headerTitleShort}</span>
         </Link>
-        {language !== "fi" && (
-          <Button onClick={() => i18n.changeLanguage("fi")}>{t("header.switchLanguage", { lng: "fi" })}</Button>
+        {language !== "sv" && (
+          <Button onClick={() => i18n.changeLanguage("sv")}>{t("header.switchLanguage", { lng: "sv" })}</Button>
         )}
         {language !== "en" && (
           <Button onClick={() => i18n.changeLanguage("en")}>{t("header.switchLanguage", { lng: "en" })}</Button>
