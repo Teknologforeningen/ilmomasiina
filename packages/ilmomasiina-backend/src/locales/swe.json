@@ -1,0 +1,10 @@
+{
+  "translation": {
+    "dateFormat.general": "DD.MM.YYYY HH:mm",
+    "emails.confirmation.signup.subject": "Anmälningsbekräftelse: {{event}}",
+    "emails.confirmation.edit.subject": "Editeringsbekräftelse: {{event}}",
+    "emails.newUser.subject": "Användare skapades för evenemang.tf.fi",
+    "emails.promotedFromQueue.subject": "Du fick plats på evenemanget {{event}} från kön",
+    "emails.resetPassword.subject": "Ditt lösenord till evenemang.tf.fi har återställts"
+  }
+}
