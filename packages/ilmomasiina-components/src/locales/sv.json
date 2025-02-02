@@ -73,7 +73,7 @@
     "errors.default.title": "Något gick fel",
     "errors.InitialSetupNeeded.title": "Initial setup needed",
     "errors.InitialSetupNeeded.description": "The server seems to be freshly installed. This frontend doesn't support initial setup \u2013 please visit the admin interface to set up the server.",
-    "errors.500.description": "Ett internt fel uppstod i servern. $t(errors.contactAdmin)",
+    "errors.500.description": "Ett internt fel uppstod. $t(errors.contactAdmin)",
     "errors.502.description": "Backend servern verkar vara nere. $t(errors.contactAdmin)",
     "errors.503.description": "Backend servern verkar vara nere. $t(errors.contactAdmin)",
     "errors.504.description": "Backend servern verkar inte svara. $t(errors.contactAdmin)",
