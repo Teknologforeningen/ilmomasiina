@@ -1,12 +1,12 @@
 import i18n from "i18next";
 
 import * as en from "./locales/en.json";
-import * as fi from "./locales/fi.json";
+import * as sv from "./locales/sv.json";
 
 const resources = {
   // this way we generate typescript errors if not exact match
-  en: en satisfies typeof fi,
-  fi: fi satisfies typeof en,
+  en: en satisfies typeof sv,
+  sv: sv satisfies typeof en,
 } as const;
 
 export type KnownLanguage = keyof typeof resources;

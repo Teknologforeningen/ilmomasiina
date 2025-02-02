@@ -1,0 +1,9 @@
+extends ../layout.pug
+
+block mainContent
+  div.content-block
+    p.bodyText Ilmomasiina admin användare har skapats för dig.
+    ul
+      li #[strong E-post:] #{email}
+      li #[strong Lösenord:] #{password}
+  p.bodyText Du kan logga in på #[a(href=siteUrl) #{siteUrl}].

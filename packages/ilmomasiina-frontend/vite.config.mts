@@ -79,7 +79,7 @@ export default defineConfig(({ mode }) => ({
     BRANDING_FOOTER_HOME_LINK: process.env.BRANDING_FOOTER_HOME_LINK || "",
     BRANDING_LOGIN_PLACEHOLDER_EMAIL: process.env.BRANDING_LOGIN_PLACEHOLDER_EMAIL || "admin@tietokilta.fi",
     TIMEZONE,
-    DEFAULT_LANGUAGE: process.env.DEFAULT_LANGUAGE || "fi",
+    DEFAULT_LANGUAGE: process.env.DEFAULT_LANGUAGE || "sv",
   }),
 
   plugins: [
