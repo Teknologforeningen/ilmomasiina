@@ -1,0 +1,33 @@
+extends ../layout.pug
+
+block mainContent
+  if admin && type == "signup"
+    div.content-block
+      p.bodyText #[strong En admininstratör har anmält dig till detta evenemang.]
+  if admin && type == "edit"
+    div.content-block
+      p.bodyText #[strong En administratör har editerat din anmälan.]
+  if event.verificationEmail
+    div.content-block
+      p.bodyText #{event.verificationEmail}
+  if queuePosition
+    div.content-block
+      p.bodyText #[strong Du är i kön på plats #{queuePosition}.] Du blir kontaktad per e-post ifall du får en plats till evenemanget.
+  div.content-block
+    p.bodyText Info om evenemanget:
+    ul
+      li #[strong Evenemang:] #{event.title}
+      li #[strong Plats:] #{event.location}
+      if date
+        li #[strong Tid:] #{date}
+  div.content-block
+    p.bodyText Anmälningsdetaljer:
+    ul
+      if name
+        li #[strong Namn:] #{name}
+      li #[strong E-post:] #{email}
+      li #[strong Kvot:] #{quota}
+      each val in answers
+        li #[strong #{val.label}:] #{val.answer}
+  div.content-block
+    p.bodyText Om du vill avanmäla dig eller ändra din anmälan kan du göra det genom att klicka på #[a(href=cancelLink) denna länk].

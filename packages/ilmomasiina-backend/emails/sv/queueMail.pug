@@ -1,0 +1,14 @@
+extends ../layout.pug
+
+block mainContent
+  div.content-block
+    p.bodyText Din anmälan till #{event.title} togs emot från kön.
+  div.content-block
+    p.bodyText Info om evenemanget:
+    ul
+      li #[strong Evenemang:] #{event.title}
+      li #[strong Plats:] #{event.location}
+      if date
+        li #[strong Tid:] #{date}
+  div.content-block
+    p.bodyText Om du vill avanmäla dig eller ändra din anmälan kan du göra det genom att klicka på #[a(href=cancelLink) denna länk].
