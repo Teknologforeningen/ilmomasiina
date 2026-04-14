@@ -53,6 +53,8 @@ jobs:
             type=semver,pattern={{major}}.{{minor}},enable=${{ github.ref_type == 'tag' }}
             type=ref,event=branch,enable=${{ github.ref_type == 'branch' }}
             type=sha
+          flavor: |
+            latest=true
 
       - name: Get version tag
         id: get-version
